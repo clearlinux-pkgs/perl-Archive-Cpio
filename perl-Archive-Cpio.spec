@@ -4,16 +4,17 @@
 #
 Name     : perl-Archive-Cpio
 Version  : 0.10
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/P/PI/PIXEL/Archive-Cpio-0.10.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PI/PIXEL/Archive-Cpio-0.10.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/liba/libarchive-cpio-perl/libarchive-cpio-perl_0.10-1.debian.tar.xz
 Summary  : 'module for manipulations of cpio archives'
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
-Requires: perl-Archive-Cpio-bin
-Requires: perl-Archive-Cpio-license
-Requires: perl-Archive-Cpio-man
+Requires: perl-Archive-Cpio-bin = %{version}-%{release}
+Requires: perl-Archive-Cpio-license = %{version}-%{release}
+Requires: perl-Archive-Cpio-man = %{version}-%{release}
+BuildRequires : buildreq-cpan
 
 %description
 No detailed description available
@@ -21,11 +22,21 @@ No detailed description available
 %package bin
 Summary: bin components for the perl-Archive-Cpio package.
 Group: Binaries
-Requires: perl-Archive-Cpio-license
-Requires: perl-Archive-Cpio-man
+Requires: perl-Archive-Cpio-license = %{version}-%{release}
+Requires: perl-Archive-Cpio-man = %{version}-%{release}
 
 %description bin
 bin components for the perl-Archive-Cpio package.
+
+
+%package dev
+Summary: dev components for the perl-Archive-Cpio package.
+Group: Development
+Requires: perl-Archive-Cpio-bin = %{version}-%{release}
+Provides: perl-Archive-Cpio-devel = %{version}-%{release}
+
+%description dev
+dev components for the perl-Archive-Cpio package.
 
 
 %package license
@@ -45,10 +56,10 @@ man components for the perl-Archive-Cpio package.
 
 
 %prep
-tar -xf %{SOURCE1}
-cd ..
 %setup -q -n Archive-Cpio-0.10
-mkdir -p %{_topdir}/BUILD/Archive-Cpio-0.10/deblicense/
+cd ..
+%setup -q -T -D -n Archive-Cpio-0.10 -b 1
+mkdir -p deblicense/
 mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Archive-Cpio-0.10/deblicense/
 
 %build
@@ -73,12 +84,12 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/perl-Archive-Cpio
-cp deblicense/copyright %{buildroot}/usr/share/doc/perl-Archive-Cpio/deblicense_copyright
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-Archive-Cpio
+cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Archive-Cpio/deblicense_copyright
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -87,23 +98,26 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Archive/Cpio.pm
-/usr/lib/perl5/site_perl/5.26.1/Archive/Cpio/Common.pm
-/usr/lib/perl5/site_perl/5.26.1/Archive/Cpio/File.pm
-/usr/lib/perl5/site_perl/5.26.1/Archive/Cpio/FileHandle_with_pushback.pm
-/usr/lib/perl5/site_perl/5.26.1/Archive/Cpio/NewAscii.pm
-/usr/lib/perl5/site_perl/5.26.1/Archive/Cpio/ODC.pm
-/usr/lib/perl5/site_perl/5.26.1/Archive/Cpio/OldBinary.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Archive/Cpio.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Archive/Cpio/Common.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Archive/Cpio/File.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Archive/Cpio/FileHandle_with_pushback.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Archive/Cpio/NewAscii.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Archive/Cpio/ODC.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Archive/Cpio/OldBinary.pm
 
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/cpio-filter
 
-%files license
+%files dev
 %defattr(-,root,root,-)
-/usr/share/doc/perl-Archive-Cpio/deblicense_copyright
+/usr/share/man/man3/Archive::Cpio.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Archive-Cpio/deblicense_copyright
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/cpio-filter.1
-/usr/share/man/man3/Archive::Cpio.3
