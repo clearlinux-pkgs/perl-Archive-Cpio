@@ -4,7 +4,7 @@
 #
 Name     : perl-Archive-Cpio
 Version  : 0.10
-Release  : 7
+Release  : 8
 URL      : https://cpan.metacpan.org/authors/id/P/PI/PIXEL/Archive-Cpio-0.10.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PI/PIXEL/Archive-Cpio-0.10.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/liba/libarchive-cpio-perl/libarchive-cpio-perl_0.10-1.debian.tar.xz
