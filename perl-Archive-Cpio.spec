@@ -4,11 +4,11 @@
 #
 Name     : perl-Archive-Cpio
 Version  : 0.10
-Release  : 8
+Release  : 9
 URL      : https://cpan.metacpan.org/authors/id/P/PI/PIXEL/Archive-Cpio-0.10.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PI/PIXEL/Archive-Cpio-0.10.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/liba/libarchive-cpio-perl/libarchive-cpio-perl_0.10-1.debian.tar.xz
-Summary  : 'module for manipulations of cpio archives'
+Summary  : module for manipulations of cpio archives
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
 Requires: perl-Archive-Cpio-bin = %{version}-%{release}
@@ -23,7 +23,6 @@ No detailed description available
 Summary: bin components for the perl-Archive-Cpio package.
 Group: Binaries
 Requires: perl-Archive-Cpio-license = %{version}-%{release}
-Requires: perl-Archive-Cpio-man = %{version}-%{release}
 
 %description bin
 bin components for the perl-Archive-Cpio package.
@@ -34,6 +33,7 @@ Summary: dev components for the perl-Archive-Cpio package.
 Group: Development
 Requires: perl-Archive-Cpio-bin = %{version}-%{release}
 Provides: perl-Archive-Cpio-devel = %{version}-%{release}
+Requires: perl-Archive-Cpio = %{version}-%{release}
 
 %description dev
 dev components for the perl-Archive-Cpio package.
@@ -60,7 +60,7 @@ man components for the perl-Archive-Cpio package.
 cd ..
 %setup -q -T -D -n Archive-Cpio-0.10 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Archive-Cpio-0.10/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Archive-Cpio-0.10/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -98,13 +98,13 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.1/Archive/Cpio.pm
-/usr/lib/perl5/vendor_perl/5.28.1/Archive/Cpio/Common.pm
-/usr/lib/perl5/vendor_perl/5.28.1/Archive/Cpio/File.pm
-/usr/lib/perl5/vendor_perl/5.28.1/Archive/Cpio/FileHandle_with_pushback.pm
-/usr/lib/perl5/vendor_perl/5.28.1/Archive/Cpio/NewAscii.pm
-/usr/lib/perl5/vendor_perl/5.28.1/Archive/Cpio/ODC.pm
-/usr/lib/perl5/vendor_perl/5.28.1/Archive/Cpio/OldBinary.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Archive/Cpio.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Archive/Cpio/Common.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Archive/Cpio/File.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Archive/Cpio/FileHandle_with_pushback.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Archive/Cpio/NewAscii.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Archive/Cpio/ODC.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Archive/Cpio/OldBinary.pm
 
 %files bin
 %defattr(-,root,root,-)
