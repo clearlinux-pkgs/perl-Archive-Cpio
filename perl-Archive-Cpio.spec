@@ -4,7 +4,7 @@
 #
 Name     : perl-Archive-Cpio
 Version  : 0.10
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/P/PI/PIXEL/Archive-Cpio-0.10.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PI/PIXEL/Archive-Cpio-0.10.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/liba/libarchive-cpio-perl/libarchive-cpio-perl_0.10-1.debian.tar.xz
@@ -96,7 +96,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Archive-Cpio
-cp %{_builddir}/Archive-Cpio-0.10/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Archive-Cpio/7760b00d8b361a343620622fd1251a37f3783586
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Archive-Cpio/7760b00d8b361a343620622fd1251a37f3783586
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -128,10 +128,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Archive/Cpio.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Archive/Cpio/Common.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Archive/Cpio/File.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Archive/Cpio/FileHandle_with_pushback.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Archive/Cpio/NewAscii.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Archive/Cpio/ODC.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Archive/Cpio/OldBinary.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Archive/Cpio.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Archive/Cpio/Common.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Archive/Cpio/File.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Archive/Cpio/FileHandle_with_pushback.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Archive/Cpio/NewAscii.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Archive/Cpio/ODC.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Archive/Cpio/OldBinary.pm
