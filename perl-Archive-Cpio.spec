@@ -128,10 +128,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.32.1/Archive/Cpio.pm
-/usr/lib/perl5/vendor_perl/5.32.1/Archive/Cpio/Common.pm
-/usr/lib/perl5/vendor_perl/5.32.1/Archive/Cpio/File.pm
-/usr/lib/perl5/vendor_perl/5.32.1/Archive/Cpio/FileHandle_with_pushback.pm
-/usr/lib/perl5/vendor_perl/5.32.1/Archive/Cpio/NewAscii.pm
-/usr/lib/perl5/vendor_perl/5.32.1/Archive/Cpio/ODC.pm
-/usr/lib/perl5/vendor_perl/5.32.1/Archive/Cpio/OldBinary.pm
+/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio.pm
+/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio/Common.pm
+/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio/File.pm
+/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio/FileHandle_with_pushback.pm
+/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio/NewAscii.pm
+/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio/ODC.pm
+/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio/OldBinary.pm
