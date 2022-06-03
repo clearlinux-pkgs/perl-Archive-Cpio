@@ -4,7 +4,7 @@
 #
 Name     : perl-Archive-Cpio
 Version  : 0.10
-Release  : 22
+Release  : 23
 URL      : https://cpan.metacpan.org/authors/id/P/PI/PIXEL/Archive-Cpio-0.10.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PI/PIXEL/Archive-Cpio-0.10.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/liba/libarchive-cpio-perl/libarchive-cpio-perl_0.10-1.debian.tar.xz
@@ -128,10 +128,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio/Common.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio/File.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio/FileHandle_with_pushback.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio/NewAscii.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio/ODC.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Archive/Cpio/OldBinary.pm
+/usr/lib/perl5/*
